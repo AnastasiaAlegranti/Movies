@@ -1,0 +1,20 @@
+<div *ngIf="moviesBySearch" class="form-group">
+     <!-- ngModel was splited for titlecase pipe use -->
+    <input type="text" [ngModel]="searchByTitle |titlecase" (keypress)="filterRegex($event)" (keyup)="getMovieTitles()"
+        (ngModelChange)="searchByTitle=$event" class="form-control" placeholder="Enter a movie title">
+    <br>
+    <div class="input-group-append" *ngIf="regexAnnouncement">
+        <label>{{regexAnnouncement}}</label>
+    </div>
+
+    <div class="list-group" id="list-tab" role="tablist">
+        <ul class="list-group" *ngFor="let movies of moviesBySearch.Search">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <img src="{{movies.Poster}}" height="100" width="100">
+                {{movies.Title}} ({{movies.Year}})
+                <span class="badge badge-primary badge-pill"></span>
+                <button (click)="getMovieDetails(movies.imdbID)" data-toggle="modal"
+                    data-target="#movieDetailsModal">Details</button>
+        </ul>
+    </div>
+</div>

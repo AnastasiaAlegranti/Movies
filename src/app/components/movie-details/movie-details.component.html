@@ -1,0 +1,39 @@
+<div #modal class="modal fade" id="movieDetailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter"
+    aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered" role="document"  >
+        <div class="modal-content" *ngIf="movieDetails || addingAnnouncement" >
+            <div *ngIf="movieDetails; else announcement">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        {{movieDetails.Title}}({{movieDetails.Year}})</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="card-text"> Summary: {{movieDetails.Plot}}</p>
+                    <p class="card-text"> Genre: {{movieDetails.Genre}}</p>
+                    <p class="card-text"> Rating: {{movieDetails.imdbRating}}</p>
+                    <p class="card-text"> Genre: {{movieDetails.Director}}</p>
+                    <a href="{{movieDetails.Website}}" target="_blank" class="card-link"> To the movie</a><br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="editToList()">
+                        Add to list
+                    </button>
+                </div>
+            </div>
+            <ng-template #announcement >
+                <div class="modal-body">
+                    <p>
+                        {{addingAnnouncement}}
+                    </p>
+                </div>
+                <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

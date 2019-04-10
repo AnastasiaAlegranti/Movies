@@ -1,0 +1,4 @@
+<div>
+    <app-movie-titles (movieDetails)="transferMovieDetails($event)" (addingAnnouncement)="initAnnouncement($event)"></app-movie-titles>
+    <app-movie-details [movieDetails]="movieDetails" [addingAnnouncement]="addingAnnouncement"></app-movie-details>
+</div>
